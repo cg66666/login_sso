@@ -1,0 +1,551 @@
+@font-face {
+  font-family: "cc";
+  src: url("./typeface/cc.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+html {
+  width: 100vw;
+  height: 100%;
+  overflow: hidden;
+}
+.pc_contianer {
+  min-width: 1350px !important;
+}
+body {
+  width: 100%;
+  height: 100%;
+}
+
+.messageContainer {
+  position: fixed;
+  top: -55px;
+  width: 100%;
+  height: 10px;
+  z-index: 99999;
+  & > div {
+    font-size: 20px;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 400px;
+    padding: 12px 23px;
+    color: red;
+    font-weight: bold;
+    text-align: center;
+    transition: all 0.3s;
+    border-radius: 6px;
+    box-shadow: 0 6px 16px 0 rgba(0, 0, 0, 0.08),
+      0 3px 6px -4px rgba(0, 0, 0, 0.12), 0 9px 28px 8px rgba(0, 0, 0, 0.05);
+    background: rgba(255, 255, 255, 0.95);
+  }
+}
+
+// pc端样式
+.pc_back {
+  width: 100%;
+  height: 100%;
+  background: url("./asset/pc/bg.webp");
+  background-size: cover;
+  background-repeat: no-repeat;
+  overflow: scroll;
+  display: flex;
+  justify-content: center; /* 水平居中 */
+  align-items: center; /* 垂直居中 */
+  .container {
+    width: 1350px;
+    min-height: 720px;
+    margin: auto;
+    position: relative;
+    .showList {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      img {
+        margin-right: 30px;
+        opacity: 0;
+        transition: 1s;
+      }
+      .head1 {
+        transform: translateY(-300px);
+      }
+      .head2 {
+        transform: translateY(400px);
+      }
+      .head3 {
+        transform: translateY(-275px);
+      }
+      .head1_active {
+        transform: translateY(0);
+        opacity: 0.9;
+      }
+      .head2_active {
+        transform: translateY(55px);
+        opacity: 0.9;
+      }
+      .head3_active {
+        transform: translateY(35px);
+        opacity: 0.9;
+      }
+    }
+    .midContent {
+      box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform-style: preserve-3d;
+      transform: translateY(-50%) rotateY(0deg);
+      transition: 1s;
+      width: 530px;
+      height: 700px;
+      .btn {
+        border: none;
+        background: #1677ff;
+        color: white;
+        transition: 0.3s;
+        border-radius: 5px;
+        &:hover {
+          background: #4096ff;
+        }
+        &:active {
+          background: #0958d9;
+        }
+      }
+      .toLoginBtn {
+        width: 400px;
+        height: 55px;
+        left: 50%;
+        transform: translateX(-50%);
+        position: absolute;
+        top: 500px;
+      }
+      .toBackBtn {
+        width: 100px;
+        height: 40px;
+        position: absolute;
+        left: 40px;
+        top: 40px;
+        background: transparent;
+        color: #0958d9;
+        &:hover {
+          background: #b2d3fc70;
+        }
+      }
+
+      .inputItem {
+        margin-bottom: 45px;
+        width: 100%;
+        position: relative;
+        font-size: 24px;
+
+        // .contenteditableDiv{
+        //   background: rgba(28, 31, 33, 0.06);
+        //   padding: 12px 20px;
+        //   border-radius: 5px;
+        //   outline: none;
+        //   border: none;
+        // }
+        input {
+          border: none;
+          background: rgba(28, 31, 33, 0.06);
+          outline: none;
+          padding: 12px 20px;
+          border-radius: 5px;
+          width: 100%;
+          height: 55px;
+          box-sizing: border-box;
+        }
+        #passwordInput {
+          padding: 12px 33px 12px 20px !important;
+        }
+        .switchIcon {
+          position: absolute;
+          right: 10px;
+          top: 20px;
+          width: 22px;
+          height: 17px;
+          cursor: pointer;
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: none;
+          }
+          .showIcon {
+            display: block;
+          }
+        }
+      }
+      .verificationCode {
+        display: flex;
+        height: 55px;
+        justify-content: space-between;
+        input {
+          // border: none;
+          // outline: none;
+          padding: 12px 20px;
+          border-radius: 5px;
+          width: 45%;
+          box-sizing: border-box;
+          background: transparent;
+          outline: none;
+        }
+        .svgContainer {
+          height: 100%;
+          width: 45%;
+          cursor: pointer;
+        }
+      }
+
+      .scrollContainer {
+        overflow: hidden;
+        width: 400px;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        height: 450px;
+        top: 180px;
+        .scrollContent {
+          display: flex;
+          height: 100%;
+          transition: 0.3s;
+        }
+        .showPhoneContent {
+          transform: translateX(-430px);
+        }
+      }
+      .passwordLogin {
+        flex-shrink: 0;
+        height: 450px;
+        top: 180px;
+        width: 400px;
+        margin-right: 30px;
+      }
+      .phoneVerificationCode {
+        display: flex;
+        height: 55px;
+        justify-content: space-between;
+        font-size: 24px;
+        input {
+          // border: none;
+          // outline: none;
+          padding: 12px 20px;
+          border-radius: 5px;
+          width: 45%;
+          box-sizing: border-box;
+          background: transparent;
+          outline: none;
+        }
+        button {
+          text-align: center;
+          height: 100%;
+          width: 45%;
+          border: none;
+          border-radius: 5px;
+          background: rgba(240, 240, 240);
+          transition: 0.3s;
+          // color: white;
+          &:hover {
+            background: rgb(246, 246, 246);
+          }
+          &:active {
+            background: rgba(220, 220, 220);
+          }
+        }
+        .countDown {
+          transition: none;
+          cursor: not-allowed;
+          color: #757575;
+          font-size: 18px;
+          &:hover {
+            background: rgba(240, 240, 240);
+          }
+          &:active {
+            background: rgba(240, 240, 240);
+          }
+        }
+      }
+
+      .phoneLogin {
+        flex-shrink: 0;
+        // right: -440px;
+        // position: absolute;
+        height: 450px;
+        top: 180px;
+        width: 400px;
+      }
+      .front {
+        position: absolute;
+        left: 0;
+        top: 0;
+        transform-style: preserve-3d;
+        backface-visibility: hidden;
+        transition: 0.5s;
+        width: 100%;
+        height: 100%;
+        // z-index: 9;
+        .tab {
+          position: absolute;
+          left: 60px;
+          top: 60px;
+          display: flex;
+          font-size: 24px;
+          .tab_text {
+            padding: 20px 0;
+            transition: 0.3s;
+            cursor: pointer;
+            &:hover {
+              color: #4096ff;
+            }
+          }
+          .tab_text_active {
+            color: #1677ff;
+            &:hover {
+              color: #1677ff;
+            }
+          }
+          .line {
+            width: 105px;
+            height: 4px;
+            background: #1677ff;
+            position: absolute;
+            bottom: 6px;
+            // left: 2px;
+            border-radius: 3px;
+            transition: 0.3s;
+            transform: translateX(-2px);
+          }
+          .line_active {
+            transform: translateX(127px);
+            width: 130px;
+          }
+        }
+
+        .toRegister {
+          text-align: right;
+          width: 400px;
+          left: 50%;
+          transform: translateX(-50%);
+          position: absolute;
+          top: 585px;
+          font-size: 14px;
+          color: #4096ff;
+          cursor: pointer;
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+      }
+      .hideFront {
+        // z-index: -9;
+        opacity: 0;
+      }
+      .back {
+        position: absolute;
+        transform-style: preserve-3d;
+        backface-visibility: hidden;
+        font-size: 20px;
+        transition: 0.5s;
+        transform: rotateY(-180deg);
+        width: 100%;
+        height: 100%;
+        left: 0;
+        top: 0;
+        opacity: 0;
+      }
+      .passwordRegistry {
+        height: 450px;
+        top: 130px;
+        width: 400px;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+      .showBack {
+        // z-index: 9;
+        opacity: 1;
+      }
+    }
+    .flipperLogin {
+      transform: translateY(-50%) rotateY(-180deg);
+    }
+  }
+  .message {
+    border-radius: 4px;
+    padding: 8px 15px;
+  }
+  /*定义滚动条高宽及背景高宽分别对应横竖滚动条的尺寸*/
+  &::-webkit-scrollbar {
+    width: 8px;
+    height: 6px;
+    // background-color:#F5F5F5;
+  }
+  //滚动条里面的小方块，能上下左右移动（取决于是垂直滚动条还是水平滚动条）
+  &::-webkit-scrollbar-thumb {
+    // 宽度无效，由上面的决定
+    // width: 5px;
+    // -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+    // background: linear-gradient(270deg, #64e6c0 0%, #687ff9 100%);
+    background: rgb(220, 220, 220);
+    // 控制右侧间隙，会导致圆角不完整问题
+    border-right: 3px solid white;
+    /*滚动条里面小方块*/
+    border-radius: 513px;
+    box-shadow: 8px 0 0 rgb(220, 220, 220) inset;
+  }
+  //滑块的浮动行为
+  &::-webkit-scrollbar-thumb:hover {
+    // box-shadow: 8px 0 0 #4a4a4a inset;
+    cursor: pointer;
+  }
+  //滚动条的轨道（里面装有thumb）滚动槽
+  &::-webkit-scrollbar-track {
+    // 无效
+    // padding-right: 93px;
+    // border-right: 10px solid white;
+    /*滚动条里面轨道*/
+    // -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+    border-radius: 3px;
+    // background: #262335;
+    // margin: 3px;
+  }
+  // &::-webkit-scrollbar-corner {
+  //   /* 垂直和水平的交叉角 */
+  //   background: #262335;
+  // }
+}
+
+// mobile端样式
+.mobile_back {
+  width: 100%;
+  height: 100%;
+  .mobile_contianer {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    justify-content: center; /* 水平居中 */
+    align-items: center; /* 垂直居中 */
+    .back1 {
+      position: absolute;
+      left: -59rem;
+      top: -52rem;
+      width: 202rem;
+      height: 199rem;
+    }
+    .back2 {
+      position: absolute;
+      left: -59rem;
+      top: 12rem;
+      width: 223rem;
+      height: 203rem;
+    }
+    .midContent {
+      min-height: 300px;
+      width: 85rem;
+      height: 55%;
+      background: transparent;
+      box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+      transform: translateY(15rem);
+      opacity: 0;
+      transition: 0.4s;
+      position: relative;
+      padding-top: 10rem;
+      box-sizing: border-box;
+      .title {
+        font-size: 10rem;
+        text-align: center;
+        letter-spacing: 5rem;
+        font-family: "cc";
+      }
+      .content {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        // border: 1px solid red;
+        width: 85%;
+        height: 61%;
+        position: absolute;
+        top: 24%;
+        left: 50%;
+        transform: translateX(-50%);
+        // padding: 10% 0;
+        box-sizing: border-box;
+        font-size: 25px;
+        line-height: 50px;
+        .phoneInput {
+          width: 100%;
+          height: 50px;
+          box-sizing: border-box;
+          border: none;
+          background: rgba(28, 31, 33, 0.06);
+          outline: none;
+          border-radius: 5px;
+          box-sizing: border-box;
+          // margin-bottom: 6rem;
+          padding: 0 10px;
+        }
+
+        .verificationCode {
+          display: flex;
+          justify-content: space-between;
+          input {
+            padding: 0 10px;
+            height: 50px;
+            border-radius: 5px;
+            width: 45%;
+            box-sizing: border-box;
+            background: transparent;
+            outline: none;
+          }
+          button {
+            font-size: 19px;
+            height: 50px;
+            text-align: center;
+            height: 100%;
+            width: 45%;
+            border: none;
+            border-radius: 5px;
+            background: rgba(28, 31, 33, 0.1);
+            transition: 0.3s;
+            &:active {
+              background: rgba(220, 220, 220);
+            }
+          }
+          .countDown {
+            font-size: 15px !important;
+            transition: none;
+            cursor: not-allowed;
+            color: #757575;
+            font-size: 18px;
+            &:hover {
+              background: rgba(240, 240, 240);
+            }
+            &:active {
+              background: rgba(240, 240, 240);
+            }
+          }
+        }
+        .loginBtn {
+          border: none;
+          background: #1677ff;
+          color: white;
+          transition: 0.3s;
+          border-radius: 5px;
+          width: 100%;
+          height: 50px;
+          &:active {
+            background: #0958d9;
+          }
+        }
+      }
+    }
+    .showMidContent {
+      opacity: 1;
+      transform: translateY(0rem);
+    }
+  }
+}

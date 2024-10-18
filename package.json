@@ -1,0 +1,12 @@
+{
+  "type": "module",
+  "devDependencies": {
+    "cssnano": "^7.0.6",
+    "html-minifier": "^4.0.0",
+    "clean-css": "^5.3.3",
+    "fs-extra": "^11.2.0",
+    "nanoid": "^5.0.7",
+    "terser": "^5.36.0"
+  },
+  "dependencies": {}
+}

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./style/normalize.css" />
+    <link rel="stylesheet" href="./style/index.css" />
+    <script type="text/javascript" src="plugin/jQuery/jquery.min.js"></script>
+    <script src="plugin/jssha/sha512.min.js"></script>
+    <script src="./js/utils.js"></script>
+  </head>
+  <body>
+    <div class="messageContainer"></div>
+    <div class="pc_back" id="pc_back">
+      <div class="container pc_contianer">
+        <div class="showList">
+          <img src="./asset/pc/head1.webp" class="head1" id="head1" />
+          <img src="./asset/pc/head2.webp" class="head2" id="head2" />
+          <img src="./asset/pc/head3.webp" class="head3" id="head3" />
+        </div>
+        <div class="midContent" id="login">
+          <div class="loginContain front" id="loginContain">
+            <div class="tab" id="tab">
+              <div
+                class="tab_text tab_text_active"
+                id="tab_text1"
+                style="margin-right: 35px"
+              >
+                账号登录
+              </div>
+              <div class="tab_text" id="tab_text2">手机号登录</div>
+              <div class="line" id="line"></div>
+            </div>
+            <div class="scrollContainer">
+              <div class="scrollContent" id="scrollContent">
+                <div class="passwordLogin">
+                  <div class="inputItem">
+                    <input
+                      type="text"
+                      placeholder="请输入账号"
+                      autocomplete="username"
+                      id="accountInput"
+                    />
+                  </div>
+                  <div class="inputItem">
+                    <input
+                      type="password"
+                      id="passwordInput"
+                      placeholder="请输入密码"
+                      autocomplete="new-password"
+                    />
+                    <div class="switchIcon" id="switchIcon">
+                      <img
+                        src="./asset/pc/passwordHidden.webp"
+                        id="showPassword"
+                        class="showIcon"
+                      />
+                      <img
+                        src="./asset/pc/passwordShow.webp"
+                        id="hiddenPassword"
+                      />
+                    </div>
+                  </div>
+                  <div class="verificationCode">
+                    <input type="text" />
+                    <div class="svgContainer" id="svgContainer"></div>
+                  </div>
+                </div>
+                <div class="phoneLogin">
+                  <div class="inputItem">
+                    <!-- <div class="contenteditableDiv" contenteditable="true"></div> -->
+                    <input
+                      type="text"
+                      placeholder="请输入手机号"
+                      autocomplete="username"
+                      id="phoneInput"
+                    />
+                  </div>
+                  <div class="phoneVerificationCode">
+                    <input type="text" />
+                    <button>发送验证码</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <button class="btn toLoginBtn">登录</button>
+            <a class="toRegister" id="toRegister">快速注册（手机号免注册）</a>
+          </div>
+          <div class="registerContainer back" id="registerContainer">
+            <button class="btn toBackBtn" id="toBackBtn">返回</button>
+            <div class="passwordRegistry">
+              <div class="inputItem">
+                <input
+                  type="text"
+                  placeholder="请输入注册账号名"
+                  id="usernameInput"
+                />
+              </div>
+              <div class="inputItem">
+                <input
+                  type="text"
+                  placeholder="请输入注册账号"
+                  id="accountInput"
+                />
+              </div>
+              <div class="inputItem">
+                <input
+                  type="password"
+                  id="passwordInput"
+                  placeholder="请输入注册密码"
+                />
+                <div class="switchIcon" id="switchIcon">
+                  <img
+                    src="./asset/pc/passwordHidden.webp"
+                    id="showPassword"
+                    class="showIcon"
+                  />
+                  <img src="./asset/pc/passwordShow.webp" id="hiddenPassword" />
+                </div>
+              </div>
+              <div class="verificationCode">
+                <input type="text" />
+                <div class="svgContainer" id="svgContainer"></div>
+              </div>
+            </div>
+            <button class="btn toLoginBtn" id="toRegisterBtn">
+              注册并登录
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="message" id="message"></div>
+    </div>
+    <div class="mobile_back" id="mobile_back">
+      <div class="container mobile_contianer">
+        <img class="back1" src="./asset/mobile/bg1.png" />
+        <img class="back2" src="./asset/mobile/bg2.png" />
+        <div class="midContent">
+          <div class="title">欢迎登录</div>
+          <div class="content">
+            <!-- <div
+              type="text"
+              class="phoneInput"
+              placeholder="请输入手机号"
+              contenteditable
+            ></div> -->
+            <input type="text" class="phoneInput" placeholder="请输入手机号" />
+            <div class="verificationCode">
+              <input type="text" />
+              <button>发送验证码</button>
+            </div>
+            <button class="loginBtn">登录</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="./js/message.js"></script>
+  <script src="./js/index.js"></script>
+</html>
