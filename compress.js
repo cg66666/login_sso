@@ -3,7 +3,7 @@
  * @Author: cg
  * @Date: 2024-10-18 09:47:47
  * @LastEditors: cg
- * @LastEditTime: 2024-10-18 17:53:55
+ * @LastEditTime: 2024-10-21 10:01:08
  */
 import fs from "fs/promises";
 import path from "path";
@@ -30,7 +30,6 @@ let tempNameList = {};
 // 递归复制目录
 const copyFolderRecursiveAsync = async (source, destination) => {
   const items = await fs.readdir(source, { withFileTypes: true });
-
   for (const item of items) {
     const sourceItem = path.join(source, item.name);
     let destItem = path.join(destination, item.name);
@@ -106,7 +105,7 @@ const copyFolderRecursiveAsync = async (source, destination) => {
   }
 };
 
-// 复制目录
+// 修改html中引用文件名称
 copyFolderRecursiveAsync(sourceDir, targetDir).then(async () => {
   if (tempHtmlConfig.destItem && tempHtmlConfig.minifiedHtml) {
     for (let item in tempNameList) {
@@ -126,3 +125,12 @@ copyFolderRecursiveAsync(sourceDir, targetDir).then(async () => {
     );
   }
 });
+
+// 复制docker，niginx配置
+const copyDesignatedFile = async (sourceFilePath, destinationFilePath) => {
+  const data = await fs.readFile(sourceFilePath, "utf8");
+  await fs.writeFile(destinationFilePath, data, "utf8");
+  console.log(`Copied ${sourceFilePath} to ${destinationFilePath}`);
+};
+copyDesignatedFile("nginx.conf", "dist/nginx.conf");
+copyDesignatedFile("dockerfile", "dist/dockerfile");
