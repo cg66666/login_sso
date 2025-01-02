@@ -7,7 +7,6 @@
  */
 const redirectUrl = getQueryParam("redirectUrl");
 initPage();
-// initPage();
 
 // 更新验证码
 $(".svgContainer").on("click", function () {

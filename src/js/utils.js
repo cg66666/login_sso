@@ -92,13 +92,13 @@ const initPage = () => {
     },
     (res) => {
       if (res.successful) {
-        console.log("res", res);
+        // console.log("res", res);
         if (res.data.ticket && res.data.url) {
           // 已登录的特殊情况，直接回跳原url
           window.location.href = `${res.data.url}?ticket=${res.data.ticket}`;
         } else if (redirectUrl) {
           // 初次进入，将跳转网页存储
-          window.location.href = window.location.origin;
+          window.location.href = window.location.origin + window.location.pathname; 
         } else {
           $(".svgContainer").html(res.data.svg);
         }

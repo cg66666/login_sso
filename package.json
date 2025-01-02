@@ -1,12 +1,14 @@
 {
   "type": "module",
+  "scripts": {
+    "build": "node build.js"
+  },
   "devDependencies": {
-    "cssnano": "^7.0.6",
-    "html-minifier": "^4.0.0",
     "clean-css": "^5.3.3",
+    "cssnano": "^7.0.6",
     "fs-extra": "^11.2.0",
+    "html-minifier": "^4.0.0",
     "nanoid": "^5.0.7",
     "terser": "^5.36.0"
-  },
-  "dependencies": {}
+  }
 }

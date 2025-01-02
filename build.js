@@ -3,7 +3,7 @@
  * @Author: cg
  * @Date: 2024-10-18 09:47:47
  * @LastEditors: cg
- * @LastEditTime: 2024-10-21 10:01:08
+ * @LastEditTime: 2025-01-02 11:27:37
  */
 import fs from "fs/promises";
 import path from "path";
@@ -15,7 +15,8 @@ import fsExtra from "fs-extra";
 
 // 指定源目录和目标目录
 const sourceDir = "src";
-const targetDir = "dist";
+const targetDir = "login_sso";
+const base = "login";
 
 // 删除目标目录
 await fsExtra.emptyDir(targetDir);
@@ -54,9 +55,6 @@ const copyFolderRecursiveAsync = async (source, destination) => {
           const newName =
             path.basename(item.name, extname) + "_" + nanoid() + extname;
           destItem = path.join(destination, newName);
-          console.log("destItem", destItem);
-          console.log("sourceItem", sourceItem);
-
           await fs.writeFile(destItem, result.code, "utf8");
           tempNameList["js/" + item.name] = "js/" + newName;
           console.log(`Compressed and copied ${sourceItem} to ${destItem}`);
@@ -105,8 +103,8 @@ const copyFolderRecursiveAsync = async (source, destination) => {
   }
 };
 
-// 修改html中引用文件名称
 copyFolderRecursiveAsync(sourceDir, targetDir).then(async () => {
+  // 修改html中引用文件名称
   if (tempHtmlConfig.destItem && tempHtmlConfig.minifiedHtml) {
     for (let item in tempNameList) {
       const regex = new RegExp(item, "g");
@@ -115,22 +113,28 @@ copyFolderRecursiveAsync(sourceDir, targetDir).then(async () => {
         tempNameList[item]
       );
     }
+
+    if (base) {
+      // 修改base
+      const regex = new RegExp(`<base href="/">`, "g");
+      tempHtmlConfig.minifiedHtml = tempHtmlConfig.minifiedHtml.replace(
+        regex,
+        `<base href="/${base}/" >`
+      );
+    }
+
+    console.log(
+      `Compressed and copied ${tempHtmlConfig.sourceItem} to ${tempHtmlConfig.destItem}`
+    );
+
     await fs.writeFile(
       tempHtmlConfig.destItem,
       tempHtmlConfig.minifiedHtml,
       "utf8"
     );
-    console.log(
-      `Compressed and copied ${tempHtmlConfig.sourceItem} to ${tempHtmlConfig.destItem}`
-    );
   }
-});
 
-// 复制docker，niginx配置
-const copyDesignatedFile = async (sourceFilePath, destinationFilePath) => {
-  const data = await fs.readFile(sourceFilePath, "utf8");
-  await fs.writeFile(destinationFilePath, data, "utf8");
-  console.log(`Copied ${sourceFilePath} to ${destinationFilePath}`);
-};
-copyDesignatedFile("nginx.conf", "dist/nginx.conf");
-copyDesignatedFile("dockerfile", "dist/dockerfile");
+  // 复制docker，niginx配置
+  await fs.copyFile("nginx.conf", `${targetDir}/nginx.conf`);
+  await fs.copyFile("Dockerfile", `${targetDir}/Dockerfile`);
+});

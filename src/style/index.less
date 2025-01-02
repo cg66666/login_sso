@@ -10,9 +10,9 @@ html {
   height: 100dvh;
   overflow: hidden;
 }
-.pc_contianer {
-  min-width: 1350px !important;
-}
+// .pc_contianer {
+//   // min-width: 1350px !important;
+// }
 body {
   width: 100%;
   height: 100%;
@@ -50,19 +50,23 @@ body {
   background: url("../asset/pc/bg.webp");
   background-size: cover;
   background-repeat: no-repeat;
-  overflow: scroll;
+  overflow: hidden;
   display: flex;
   justify-content: center; /* 水平居中 */
   align-items: center; /* 垂直居中 */
   .container {
-    width: 1350px;
-    min-height: 720px;
+    width: 100%;
+    min-width: 1200px;
+    max-width: 1350px;
+    // min-height: 720px;
+    height: 100%;
     margin: auto;
     position: relative;
     .showList {
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
+      left: 5px;
       img {
         margin-right: 30px;
         opacity: 0;
@@ -78,15 +82,16 @@ body {
         transform: translateY(-275px);
       }
       .head1_active {
-        transform: translateY(0);
+        transform: translateY(-50px);
         opacity: 0.9;
       }
       .head2_active {
-        transform: translateY(55px);
+        // transform: translateY(55px);
+        transform: translateY(0);
         opacity: 0.9;
       }
       .head3_active {
-        transform: translateY(35px);
+        transform: translateY(-15px);
         opacity: 0.9;
       }
     }
@@ -99,7 +104,10 @@ body {
       transform: translateY(-50%) rotateY(0deg);
       transition: 1s;
       width: 530px;
-      height: 700px;
+      height: 99%;
+      min-height: 650px;
+      max-height: 700px;
+      // height: 700px;
       .btn {
         border: none;
         background: #1677ff;
