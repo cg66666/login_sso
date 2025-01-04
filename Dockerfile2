@@ -1,4 +1,4 @@
-# 使用 Nginx 的官方镜像作为基础镜像
+# 使用 Nginx 的官方镜像作为基础镜像-打包
 FROM nginx:alpine
 
 # 复制自定义的 Nginx 配置文件
