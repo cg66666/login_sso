@@ -41,7 +41,7 @@ const copyFolderRecursiveAsync = async (source, destination) => {
     } else {
       const extname = path.extname(item.name);
       // 如果是JavaScript文件，则压缩并复制
-      if (extname === ".js" && !source.includes("src\\plugin")) {
+      if (extname === ".js" && !sourceItem.includes("src/plugin")) {
         const data = await fs.readFile(sourceItem, "utf8");
         try {
           const result = await Terser.minify(data);
