@@ -3,7 +3,7 @@
  * @Author: cg
  * @Date: 2024-10-18 09:47:47
  * @LastEditors: cg
- * @LastEditTime: 2025-04-07 11:48:06
+ * @LastEditTime: 2025-04-10 22:25:57
  */
 import fs from "fs/promises";
 import path from "path";
@@ -42,7 +42,8 @@ const copyFolderRecursiveAsync = async (source, destination) => {
     } else {
       const extname = path.extname(item.name);
       // 如果是JavaScript文件，则压缩并复制
-      if (extname === ".js" && !sourceItem.includes("src\\plugin")) {
+      // if (extname === ".js" && !sourceItem.includes("src\\plugin")) {
+      if (extname === ".js" && !sourceItem.includes("src/plugin")) {
         const data = await fs.readFile(sourceItem, "utf8");
         try {
           const result = await Terser.minify(data);
@@ -143,7 +144,7 @@ const rename = async () => {
 
 await copyFolderRecursiveAsync(sourceDir, targetDir);
 
-await rename()
+await rename();
 
 fsExtra
   .copy(targetDir, otherTargetDir)
