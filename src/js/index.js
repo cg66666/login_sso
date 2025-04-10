@@ -3,7 +3,7 @@
  * @Author: 朱晨光
  * @Date: 2024-05-04 16:11:15
  * @LastEditors: cg
- * @LastEditTime: 2024-10-15 17:48:17
+ * @LastEditTime: 2025-04-09 13:50:32
  */
 const redirectUrl = getQueryParam("redirectUrl");
 initPage();
@@ -15,6 +15,8 @@ $(".svgContainer").on("click", function () {
 
 // 所有输入框禁止中文
 $("input").on("input", function (e) {
+  // console.log("eeee", e.target, e.target.id);
+  if (e.target.id == "usernameInput") retutn;
   // console.log('value',e.target.value);
   e.target.value = e.target.value.replace(/[\u4e00-\u9fa5]/g, "");
 });

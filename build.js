@@ -3,7 +3,7 @@
  * @Author: cg
  * @Date: 2024-10-18 09:47:47
  * @LastEditors: cg
- * @LastEditTime: 2025-01-02 11:27:37
+ * @LastEditTime: 2025-04-07 11:48:06
  */
 import fs from "fs/promises";
 import path from "path";
@@ -16,6 +16,7 @@ import fsExtra from "fs-extra";
 // 指定源目录和目标目录
 const sourceDir = "src";
 const targetDir = "login_sso";
+const otherTargetDir = "login";
 const base = "login";
 
 // 删除目标目录
@@ -41,7 +42,7 @@ const copyFolderRecursiveAsync = async (source, destination) => {
     } else {
       const extname = path.extname(item.name);
       // 如果是JavaScript文件，则压缩并复制
-      if (extname === ".js" && !sourceItem.includes("src/plugin")) {
+      if (extname === ".js" && !sourceItem.includes("src\\plugin")) {
         const data = await fs.readFile(sourceItem, "utf8");
         try {
           const result = await Terser.minify(data);
@@ -103,7 +104,8 @@ const copyFolderRecursiveAsync = async (source, destination) => {
   }
 };
 
-copyFolderRecursiveAsync(sourceDir, targetDir).then(async () => {
+// 修改压缩文件中的引用名
+const rename = async () => {
   // 修改html中引用文件名称
   if (tempHtmlConfig.destItem && tempHtmlConfig.minifiedHtml) {
     for (let item in tempNameList) {
@@ -137,4 +139,17 @@ copyFolderRecursiveAsync(sourceDir, targetDir).then(async () => {
   // 复制docker，niginx配置
   await fs.copyFile("nginx.conf", `${targetDir}/nginx.conf`);
   await fs.copyFile("Dockerfile", `${targetDir}/Dockerfile`);
-});
+};
+
+await copyFolderRecursiveAsync(sourceDir, targetDir);
+
+await rename()
+
+fsExtra
+  .copy(targetDir, otherTargetDir)
+  .then(() => {
+    console.log(`文件夹已复制并重命名为: ${otherTargetDir}`);
+  })
+  .catch((err) => {
+    console.error("复制失败:", err);
+  });
