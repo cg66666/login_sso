@@ -3,7 +3,7 @@
  * @Author: 朱晨光
  * @Date: 2024-05-04 16:11:15
  * @LastEditors: cg
- * @LastEditTime: 2025-04-09 13:50:32
+ * @LastEditTime: 2025-04-11 11:32:37
  */
 const redirectUrl = getQueryParam("redirectUrl");
 initPage();
@@ -88,6 +88,7 @@ if (!isUserMobile()) {
     $("#tab_text1").toggleClass("tab_text_active", false);
     $("#line").toggleClass("line_active", true);
     $("#scrollContent").toggleClass("showPhoneContent", true);
+    Message("短信服务商政策修改，目前个人无法使用短信服务", 4000);
   });
 
   // 密码隐藏、显示逻辑
