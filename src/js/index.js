@@ -3,7 +3,7 @@
  * @Author: 朱晨光
  * @Date: 2024-05-04 16:11:15
  * @LastEditors: cg
- * @LastEditTime: 2025-04-11 11:52:02
+ * @LastEditTime: 2025-08-27 11:10:37
  */
 const redirectUrl = getQueryParam("redirectUrl");
 initPage();
@@ -84,6 +84,7 @@ if (!isUserMobile()) {
     if (!$(e.target).hasClass("tab_text_active")) {
       resetLoginPassword();
     }
+    Message("短信服务资质问题被暂停！", 4000);
     $(e.target).toggleClass("tab_text_active", true);
     $("#tab_text1").toggleClass("tab_text_active", false);
     $("#line").toggleClass("line_active", true);
